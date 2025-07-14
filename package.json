@@ -8,13 +8,17 @@
     "postbuild": "next export"
   },
   "dependencies": {
+    "@react-three/drei": "^9.0.0",
+    "@react-three/fiber": "^8.0.0",
+    "cesium": "^1.107.0",
+    "leaflet": "1.9.3",
     "next": "^13.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "@react-three/fiber": "^8.0.0",
-    "@react-three/drei": "^9.0.0",
-    "three": "^0.150.0",
-    "leaflet": "1.9.3",
-    "react-leaflet": "^4.0.0"
+    "react-leaflet": "^4.0.0",
+    "resium": "^1.18.3",
+    "stac-js": "^0.1.6",
+    "stac-layer": "^1.0.0-beta.1",
+    "three": "^0.150.0"
   }
 }

@@ -11,7 +11,13 @@ if ! command -v node >/dev/null; then
   nvm install 22
 fi
 
-npm ci
+if [ -f package-lock.json ]; then
+  echo "Using package-lock.json for npm ci"
+  npm ci
+else
+  echo "No package-lock.json found, using npm install"
+  npm install
+fi
 npm run build
 echo "Build completed successfully."
 # 'next build' + static export via config
