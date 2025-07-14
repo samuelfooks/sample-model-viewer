@@ -1,0 +1,17 @@
+[project]
+name = "sample-map-app"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["sample_map_app"]

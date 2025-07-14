@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet: Two Layers Example</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+  />
+  <style>
+    #map { width: 100%; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script>
+    // Base layers
+    const osm = L.tileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { maxZoom: 19, attribution: '© OpenStreetMap' }
+    );
+    const osmHOT = L.tileLayer(
+      'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution:
+          '© OpenStreetMap contributors, HOT style hosted by OSM France'
+      }
+    );
+
+    // Overlay: sample markers
+    const cities = L.layerGroup([
+      L.marker([39.61, -105.02]).bindPopup('Littleton, CO'),
+      L.marker([39.74, -104.99]).bindPopup('Denver, CO'),
+      L.marker([39.73, -104.80]).bindPopup('Aurora, CO'),
+      L.marker([39.77, -105.23]).bindPopup('Golden, CO')
+    ]);
+
+    // Initialize map with default base + overlay
+    const map = L.map('map', {
+      center: [39.74, -104.99],
+      zoom: 10,
+      layers: [osm, cities]
+    });
+
+    // Layer controls
+    const baseMaps = {
+      "OSM Standard": osm,
+      "OSM Humanitarian": osmHOT
+    };
+    const overlayMaps = {
+      "Cities": cities
+    };
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+  </script>
+</body>
+</html>
