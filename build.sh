@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+echo "Building the project..."
 SCRIPT_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 pushd "$SCRIPT_DIR" >/dev/null
 
@@ -12,5 +13,6 @@ fi
 
 npm ci
 npm run build
+echo "Build completed successfully."
 # 'next build' + static export via config
 popd >/dev/null
